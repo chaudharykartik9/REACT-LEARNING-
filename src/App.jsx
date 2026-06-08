@@ -1,10 +1,11 @@
 import React from 'react'
-import Counter from './component/Counter'
+import usePost from './Hook/useFetch'
 
 const App = () => {
+  const post = usePost() ;
   return (
     <div>
-      <Counter/>
+      {post.title}
     </div>
   )
 }
