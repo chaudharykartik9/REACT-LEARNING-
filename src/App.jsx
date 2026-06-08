@@ -1,46 +1,12 @@
-import React, { useState, createContext, useContext } from "react";
-
-const bulbContext = createContext();
+import React from 'react'
+import Counter from './component/Counter'
 
 const App = () => {
-  const [bulb, setBulb] = useState(true);
-  const objContext = {
-    bulb: bulb,
-    setBulb: setBulb,
-  };
   return (
     <div>
-      <bulbContext.Provider value={objContext}>
-        <LightBulb />
-      </bulbContext.Provider>
+      <Counter/>
     </div>
-  );
-};
-
-function LightBulb() {
-  return (
-    <div>
-      <BulbState />
-      <ToggleBulb />
-    </div>
-  );
+  )
 }
 
-function BulbState() {
-  const { bulb } = useContext(bulbContext);
-  return <div>{bulb ? "bulb is on" : "bulb is off"}</div>;
-}
-
-function ToggleBulb() {
-  const { setBulb } = useContext(bulbContext);
-  function toggle() {
-    setBulb((currentState) => !currentState);
-  }
-  return (
-    <div>
-      <button onClick={toggle}>toggle bulb </button>
-    </div>
-  );
-}
-
-export default App;
+export default App
