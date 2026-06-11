@@ -1,23 +1,6 @@
-import React, { useState } from "react";
+import { atom } from "recoil";
 
-function useCounter() {
-  const [count, setCount] = useState(0);
-  function increaseCount() {
-    setCount((val) => val + 1);
-  }
-  return {
-    count: count,
-    increaseCount: increaseCount,
-  };
-}
-
-const Counter = () => {
-  const { count, increaseCount } = useCounter();
-  return (
-    <div>
-      <button onClick={increaseCount}>Increase {count}</button>
-    </div>
-  );
-};
-
-export default Counter;
+export const counterState = atom({
+  key: "counterState",
+  default: 0,
+});

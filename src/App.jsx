@@ -1,19 +1,51 @@
-import React, { useState } from 'react'
-import usePrev from './Hook/usePrev';
+import React from "react";
+import {
+  RecoilRoot,
+  useRecoilValue,
+  useSetRecoilState,
+} from "recoil";
+import { counterState } from "./Hook/Counter";
 
-const App = () => {
-  const [state , setState] = useState(0) ;
-  let prev = usePrev(state) ;
-  function increament(){
-    setState(v=> v+1);
-  }
-  return (
-    <>
-    <button onClick={increament} >increase</button>
-    <div> number :{state}</div>
-    <div>prev: {prev}</div>
-    </>
-  )
+function Count() {
+  const count = useRecoilValue(counterState);
+
+  return <h1>{count}</h1>;
 }
 
-export default App
+function IncreaseButton() {
+  const setCount = useSetRecoilState(counterState);
+
+  return (
+    <button onClick={() => setCount((c) => c + 1)}>
+      Increase
+    </button>
+  );
+}
+
+function DecreaseButton() {
+  const setCount = useSetRecoilState(counterState);
+
+  return (
+    <button onClick={() => setCount((c) => c - 1)}>
+      Decrease
+    </button>
+  );
+}
+
+function MyApp() {
+  return (
+    <>
+      <Count />
+      <IncreaseButton />
+      <DecreaseButton />
+    </>
+  );
+}
+
+export default function App() {
+  return (
+    <RecoilRoot>
+      <MyApp />
+    </RecoilRoot>
+  );
+}
