@@ -1,8 +1,13 @@
-import React from "react";
-import MyApp from "./reactlearn/recoil";
+import React from 'react'
+import Atoms from './Hook/Atoms'
 
-function App() {
-  return <MyApp />;
+
+const App = () => {
+  return (
+    <div>
+<Atoms/>
+    </div>
+  )
 }
 
-export default App;
+export default App

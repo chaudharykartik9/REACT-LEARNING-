@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 
 function Count() {
   
@@ -15,6 +16,7 @@ function DecreaseButton() {
 }
 
 function MyApp() {
+  
   return (
     <>
       <Count />
